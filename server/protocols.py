@@ -4,16 +4,16 @@ class Protocols:
 
     # the Response class provides messages, server --> clients
     class Response:
-        NICKNAME = "Protocols.request_nickName"
-        ANSWER_VALID = "Protocols.answer_valid"
-        ANSWER_INVALID = "Protocols.answer_invalid"
-        OPPONENT = "Protocols.opponent"
-        OPPONENT_LEFT = "Protocols.opponent_left"
-        START = "Protocols.start"
-        WINNER = "Protocols.winner"
+        NICKNAME = "protocol.request_nickName"
+        ANSWER_VALID = "protocol.answer_valid"
+        ANSWER_INVALID = "protocol.answer_invalid"
+        OPPONENT = "protocol.opponent"
+        OPPONENT_EXITED = "protocol.opponent_exited"
+        START = "protocol.start"
+        WINNER = "protocol.winner"
 
     # the Request class provides messages, clients --> server
     class Request:
-        NICKNAME = "Protocols.send_nickName"
-        ANSWER = "Protocols.answer"
-        LEAVE_SERVER = "Protocols.leave_server"
+        NICKNAME = "protocol.send_nickName"
+        ANSWER = "protocol.answer"
+        LEAVE_SERVER = "protocol.leave_server"
