@@ -2,7 +2,7 @@ class Protocols:
     # this file will serve as the protocol messages sent between our clients and server
     # these messages will serve as command signals that help coordinate the logic of both sides
 
-    # the Response class provides messages, server --> clients
+    # the Response class provides messages, clients --> server
     class Response:
         NICKNAME = "protocol.request_nickName"
         GUESS_VALID = "protocol.guess_valid"
