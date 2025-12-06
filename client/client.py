@@ -24,7 +24,7 @@ class Client:
 
     def send(self, request, message):
         data = {"type": request, "data": message}
-        self.server.send(json.dumps(data).encode("UTF-8"))
+        self.server.send((json.dumps(data) + "\n").encode("UTF-8"))
 
     def receive(self):
         # because we use the newline char for better readability when receiving messages from the server, we need to
@@ -60,11 +60,13 @@ class Client:
         self.close_conn()
 
 
-
     def close_conn(self):
         self.closed = True
+        try:
+            self.server.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
         self.server.close()
-
 
     def handle_response(self, response):
         r_type = response.get("type")

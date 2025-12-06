@@ -1,7 +1,13 @@
+import sys
+from pathlib import Path
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+
 import socket  # create socket object, the endpoints for communication via TCP connection
 import json  # to encode/decode data transmitted through network. Sockets can only transmit bytes and so we need to
 # convert/revert the data into json text and back into python dictionaries
-from room import Room, GuessResult
+from server.room import Room, GuessResult
 import threading  # multiple users utilizing the server
 from protocols import Protocols
 import time
@@ -12,7 +18,7 @@ class Server:
     def __init__(self, host="127.0.0.1", port=55556):
         self.host = host
         self.port = port
-        # the server will hold a AF_INET = IPv4 addresses , SOCK_STREAM =
+        # the server will hold an AF_INET = IPv4 addresses , SOCK_STREAM =
         # TCP (which defines the transport protocol type) socket
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -80,8 +86,8 @@ class Server:
         self.opponent[self.waiting_for_opponent] = client
 
         # notify each player of their opponents nickname
-        self.send(Protocols.Response.OPPONENT, self.opponent[client], self.waiting_for_opponent)
-        self.send(Protocols.Response.OPPONENT, self.opponent[self.waiting_for_opponent], client)
+        self.send(Protocols.Response.OPPONENT, self.client_name[client], self.waiting_for_opponent)
+        self.send(Protocols.Response.OPPONENT, self.client_name[self.waiting_for_opponent], client)
 
         # now we store these players in the room dictionary
         self.rooms[client] = room
@@ -202,6 +208,8 @@ class Server:
 
     # handle messages received from clients depending on which type of msg was received
     def handle_received_msg(self, message, client):
+        # print all messages to the server
+        print(message)
         r_type = message.get("type")
         data = message.get("data")
         room = self.rooms[client]
@@ -211,6 +219,7 @@ class Server:
 
         result = room.verify_guess(data)
 
+        # the game is over, we do not accept anymore guesses
         if  result == GuessResult.GAME_OVER:
             return
 
