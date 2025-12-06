@@ -15,7 +15,7 @@ class Room:
     # generate random integer between given values, helper method so we make it static
     @staticmethod
     def generate_number():
-        return random.randint(1, 500)
+        return random.randint(1, 100)
 
     def verify_guess(self, guess):
         # if the game is over, there should be no guess submissions
