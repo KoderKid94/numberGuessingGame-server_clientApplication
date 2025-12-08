@@ -13,6 +13,7 @@ class Protocols:
         START = "protocol.start"
         WINNER = "protocol.winner"
         CORRECT_NUMBER = "protocol.correct_number"
+        GAME_BOUNDS = "protocol.bounds"
 
     # the Request class provides messages, client --> server
     class Request:

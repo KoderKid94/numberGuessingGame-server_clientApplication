@@ -28,6 +28,7 @@ class Server:
 
         self.server.bind((self.host, self.port))
         self.server.listen()
+        print(f"Listening on {self.host}:{self.port}")
 
         # dictionaries to hold game info
         # map of players names
@@ -106,6 +107,8 @@ class Server:
             # if we have a room and opponent, we start the game
             if room and opponent:
                 # send the correct generated number and start protocols
+                bounds = {"lower": room.lower_bound, "upper": room.upper_bound}
+                self.send(Protocols.Response.GAME_BOUNDS, bounds, client)
                 self.send(Protocols.Response.CORRECT_NUMBER, room.correct_number, client)
                 time.sleep(1)
                 self.send(Protocols.Response.START, None, client)
@@ -214,7 +217,7 @@ class Server:
         data = message.get("data")
         room = self.rooms[client]
 
-        if r_type != Protocols.Request.ANSWER:
+        if r_type != Protocols.Request.GUESS:
             return
 
         result = room.verify_guess(data)

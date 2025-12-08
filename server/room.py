@@ -9,13 +9,16 @@ class GuessResult(Enum):
 
 class Room:
     def __init__(self, client1, client2):
-        self.correct_number = self.generate_number()
         self.game_over = False
+        self.lower_bound = 0
+        self.upper_bound = 500
+        self.client1 = client1
+        self.client2 = client2
+        self.correct_number = self.generate_number()
 
     # generate random integer between given values, helper method so we make it static
-    @staticmethod
-    def generate_number():
-        return random.randint(1, 100)
+    def generate_number(self):
+        return random.randint(self.lower_bound, self.upper_bound)
 
     def verify_guess(self, guess):
         # if the game is over, there should be no guess submissions
