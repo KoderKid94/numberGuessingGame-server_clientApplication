@@ -1,0 +1,40 @@
+# =====================================
+# Python / macOS / IDE Ignore Rules
+# =====================================
+
+# macOS system files
+.DS_Store
+
+# Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# Editor / IDE settings
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Backup / swap files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Byte-compiled stub files
+*.pyd
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
