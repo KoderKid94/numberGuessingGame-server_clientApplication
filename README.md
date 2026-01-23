@@ -17,7 +17,7 @@ This guide provides clear, step-by-step instructions for installing, running, an
 
 No external packages are required — everything uses the Python standard library.
 
----
+
 
 
 
@@ -25,7 +25,7 @@ The game is played by running one server and separate client instances.
 
 ---
 
-## 3. How to Run the Server
+## 2. How to Run the Server
 
 1. Open a terminal.
 2. Navigate to the project directory:
@@ -42,7 +42,7 @@ You should see:
 Listening on 127.0.0.1:55556
 
 The server is now waiting for players to connect.
-4. How to Run the Client
+## 3. How to Run the Client
 
 Each player must run a client in a separate terminal window.
 
@@ -68,7 +68,7 @@ Run the client:
 
 Repeat the same process in a second terminal for Player 2.
 The game will begin automatically when both clients are connected.
-5. How the Game Works (User Instructions)
+## 4. How the Game Works (User Instructions)
 
     Each client connects to the server and sends a nickname.
 
@@ -101,7 +101,7 @@ The game will begin automatically when both clients are connected.
         Ends the game
 
 Players may restart the clients to play another round.
-6. Stopping the Application
+## 5. Stopping the Application
 Stop the Server:
 
 CTRL + C
@@ -111,7 +111,7 @@ Stop a Client:
 CTRL + C or close the window
 
 The server safely handles disconnects and cleans up the game state.
-7. Troubleshooting
+## 6. Troubleshooting
 Client cannot connect
 
 Ensure the server is running and displays:
@@ -129,20 +129,20 @@ Game does not start
 
 Both clients must be running.
 The server pairs players only when two clients connect.
-8. Summary
+## 7. Summary
 
-    Start the server:
+Start the server:
 
-python3 server/main.py
+    python3 server/main.py
 
 Start each client (run twice):
 
     python3 -m client.game
 
-    Enter nicknames
+Enter nicknames
 
-    Submit guesses
+Submit guesses
 
-    Game ends when the server declares a winner
+Game ends when the server declares a winner
 
-This completes all steps required to compile, run, and use the application.
+This completes all steps required to compile, run, and use the application.# Testing commit attribution
